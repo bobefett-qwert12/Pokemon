@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/pokemon/model/Pokemon.java</name>
+			<type>1</type>
+			<location>/Users/rper7060/Downloads/Pokemon.java</location>
+		</link>
+	</linkedResources>
 </projectDescription>

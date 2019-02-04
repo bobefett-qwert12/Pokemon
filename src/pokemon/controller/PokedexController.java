@@ -1,8 +1,8 @@
 package pokemon.controller;
 
-public class PokemonController
+public class PokedexController
 {
-	public PokemonController()
+	public PokedexController()
 	{
 		
 	}
