@@ -7,5 +7,13 @@ public class Pichu extends Pokemon implements ElectricType
 		super(number, name);
 	}
 	
+	public void voltTackle()
+	{
+		
+	}
 	
+	public void thunderBolt()
+	{
+		
+	}
 }

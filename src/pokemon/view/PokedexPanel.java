@@ -11,6 +11,10 @@ public class PokedexPanel extends JPanel
 {
 	private PokedexController appController;
 	private SpringLayout appLayout;
+	private JTextField healthPointsText;
+	private JTextField attackPointsText;
+	private JTextField enhancementModifierText;
+	private JTextField numberText;
 	
 	public PokedexPanel(PokedexController appController)
 	{

@@ -1,18 +1,18 @@
 package pokemon.model;
 
-public class Charizard extends Pokemon implements FireType, FlyingType
+public class Charizard extends Charmeleon implements FlyingType
 {
 	public Charizard(int number, String name)
 	{
 		super(number, name);
 	}
 	
-	public void flamethrower()
+	public void airCutter()
 	{
 		
 	}
 	
-	public void ember()
+	public void hurricane()
 	{
 		
 	}

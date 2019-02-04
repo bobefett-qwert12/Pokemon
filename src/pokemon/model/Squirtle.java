@@ -7,5 +7,13 @@ public class Squirtle extends Pokemon implements WaterType
 		super(number, name);
 	}
 	
+	public void splash()
+	{
+		
+	}
 	
+	public void surf()
+	{
+		
+	}
 }

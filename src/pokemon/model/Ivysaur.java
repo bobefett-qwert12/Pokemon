@@ -1,0 +1,19 @@
+package pokemon.model;
+
+public class Ivysaur extends Bulbasaur implements PoisonType
+{
+	public Ivysaur(int number, String name)
+	{
+		super(number, name);
+	}
+	
+	public void sludgeBomb()
+	{
+		
+	}
+	
+	public void toxic()
+	{
+		
+	}
+}
