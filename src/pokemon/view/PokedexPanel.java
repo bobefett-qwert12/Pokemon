@@ -11,18 +11,24 @@ public class PokedexPanel extends JPanel
 {
 	private PokedexController appController;
 	private SpringLayout appLayout;
-	private JTextField healthPointsText;
-	private JTextField attackPointsText;
-	private JTextField enhancementModifierText;
-	private JTextField numberText;
-	private JTextField nameText;
-	private JTextField canEvolveText;
-	private JLabel healthPointsLabel;
-	private JLabel attackPointsLabel;
+	
+	private JButton changeButton;
+	private JComboBox pokedexDropDown;
+	
+	private JTextField healthField;
+	private JTextField attackField;
+	private JTextField enhancementField;
+	private JTextField numberField;
+	private JTextField nameField;
+	private JTextField evolveField;
+	
+	private JLabel healthLabel;
+	private JLabel attackLabel;
 	private JLabel enhancementModifierLabel;
 	private JLabel numberLabel;
 	private JLabel nameLabel;
 	private JLabel canEvolveLabel;
+	private JLabel imageLabel;
 	
 	public PokedexPanel(PokedexController appController)
 	{
@@ -30,18 +36,23 @@ public class PokedexPanel extends JPanel
 		this.appController = appController;
 		appLayout = new SpringLayout();
 		
-		healthPointsText = new JTextField("");
-		attackPointsText = new JTextField("");
-		enhancementModifierText = new JTextField("");
-		numberText = new JTextField("");
-		nameText = new JTextField("");
-		canEvolveText = new JTextField("");
-		healthPointsLabel = new JLabel("Health Points:");
-		attackPointsLabel = new JLabel("Attack Points:");
+		changeButton = new JButton("Click here to edit your pokemon!");
+		pokedexDropDown = new JComboBox();
+		
+		healthField = new JTextField("0");
+		attackField = new JTextField("0");
+		enhancementField = new JTextField("0");
+		numberField = new JTextField("0");
+		nameField = new JTextField("0");
+		evolveField = new JTextField("False");
+		
+		healthLabel = new JLabel("Health Points:");
+		attackLabel = new JLabel("Attack Points:");
 		enhancementModifierLabel = new JLabel("Enhancement Modifier:");
 		numberLabel = new JLabel("Pokemon Number:");
 		nameLabel = new JLabel("Pokemon Name:");
 		canEvolveLabel = new JLabel("Can Evolve:");
+		imageLabel = new JLabel("MissingNo.");
 		
 		setupPanel();
 		setupLayout();
@@ -53,18 +64,24 @@ public class PokedexPanel extends JPanel
 		this.setLayout(appLayout);
 		this.setPreferredSize(new Dimension(800, 600));
 		this.setBackground(Color.darkGray);
-		this.add(healthPointsText);
-		this.add(attackPointsText);
-		this.add(enhancementModifierText);
-		this.add(numberText);
-		this.add(nameText);
-		this.add(canEvolveText);
-		this.add(healthPointsLabel);
-		this.add(attackPointsLabel);
+		
+		this.add(changeButton);
+		this.add(pokedexDropDown);
+		
+		this.add(healthField);
+		this.add(attackField);
+		this.add(enhancementField);
+		this.add(numberField);
+		this.add(nameField);
+		this.add(evolveField);
+		
+		this.add(healthLabel);
+		this.add(attackLabel);
 		this.add(enhancementModifierLabel);
 		this.add(numberLabel);
 		this.add(nameLabel);
 		this.add(canEvolveLabel);
+		this.add(imageLabel);
 	}
 	
 	private void setupLayout()
@@ -74,6 +91,20 @@ public class PokedexPanel extends JPanel
 	
 	private void setupListeners()
 	{
+		changeButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent mouseClick)
+			{
+				
+			}
+		});
 		
+		pokedexDropDown.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent mouseClick)
+			{
+				
+			}
+		});
 	}
 }
