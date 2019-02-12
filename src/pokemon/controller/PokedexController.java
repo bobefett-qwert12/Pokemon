@@ -1,12 +1,15 @@
 package pokemon.controller;
 
 import pokemon.model.Pokemon;
+import java.util.ArrayList;
 
 public class PokedexController
 {	
+	public ArrayList<Pokemon> pokemonList;
+	
 	public PokedexController()
 	{
-		
+		this.pokemonList = new ArrayList<Pokemon>(5);
 	}
 	
 	public void start()
