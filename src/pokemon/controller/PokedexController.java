@@ -39,4 +39,38 @@ public class PokedexController
 			current.setCanEvolve(Boolean.parseBoolean(data[4]));
 		}
 	}
+	
+	public boolean isInt(String maybeInt)
+	{
+		try
+		{
+			Integer.parseInt(maybeInt);
+		}
+		catch(NumberFormatException e)
+		{
+			return false;
+		}
+		catch(NullPointerException e)
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean isDouble(String maybeDouble)
+	{
+		try
+		{
+			Double.parseDouble(maybeDouble);
+		}
+		catch(NumberFormatException e)
+		{
+			return false;
+		}
+		catch(NullPointerException e)
+		{
+			return false;
+		}
+		return true;
+	}
 }
