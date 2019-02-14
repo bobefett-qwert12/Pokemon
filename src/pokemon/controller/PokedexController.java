@@ -1,15 +1,34 @@
 package pokemon.controller;
 
+import pokemon.model.Ivysaur;
+import pokemon.model.Flareon;
+import pokemon.model.Charizard;
+import pokemon.model.Pikachu;
+import pokemon.model.Squirtle;
 import pokemon.model.Pokemon;
 import java.util.ArrayList;
+import pokemon.view.PokedexFrame;
 
 public class PokedexController
 {	
 	public ArrayList<Pokemon> pokemonList;
+	public PokedexFrame frame;
+	public Pikachu Pikachu;
+	public Charizard Charizard;
+	public Ivysaur Ivysaur;
+	public Flareon Flareon;
+	public Squirtle Squirtle;
 	
 	public PokedexController()
 	{
 		this.pokemonList = new ArrayList<Pokemon>(5);
+		this.frame = new PokedexFrame(this);
+		this.Pikachu = new Pikachu(25, "Pikachu");
+		this.Squirtle = new Squirtle(7, "Squirtle");
+		this.Charizard = new Charizard(6, "Charizard");
+		this.Flareon = new Flareon(136, "Flareon");
+		this.Ivysaur = new Ivysaur(2, "Ivysaur");
+		buildPokemonList();
 	}
 	
 	public void start()
@@ -38,6 +57,25 @@ public class PokedexController
 			current.setName(data[3]);
 			current.setCanEvolve(Boolean.parseBoolean(data[4]));
 		}
+	}
+	
+	public void buildPokemonList()
+	{
+		pokemonList.add(Ivysaur);
+		pokemonList.add(Flareon);
+		pokemonList.add(Charizard);
+		pokemonList.add(Pikachu);
+		pokemonList.add(Squirtle);
+	}
+	
+	public PokedexFrame getFrame()
+	{
+		return this.frame;
+	}
+	
+	public ArrayList<Pokemon> getPokemonList()
+	{
+		return pokemonList;
 	}
 	
 	public boolean isInt(String maybeInt)

@@ -5,6 +5,7 @@ public class Charmander extends Pokemon implements FireType
 	public Charmander(int number, String name)
 	{
 		super(number, name);
+		this.setCanEvolve(true);
 	}
 	
 	public void flamethrower()

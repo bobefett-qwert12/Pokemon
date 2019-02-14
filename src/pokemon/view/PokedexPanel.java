@@ -59,10 +59,10 @@ public class PokedexPanel extends JPanel
 		canEvolveLabel = new JLabel("Can Evolve:");
 		imageLabel = new JLabel("Pokemon goes here", pokemonIcon, JLabel.CENTER);
 		
+		setupDropdown();
 		setupPanel();
 		setupLayout();
 		setupListeners();
-		setupDropdown();
 	}
 	
 	private void setupPanel()
@@ -95,10 +95,12 @@ public class PokedexPanel extends JPanel
 	
 	private void setupLayout()
 	{
+		appLayout.putConstraint(SpringLayout.WEST, pokedexDropDown, 0, SpringLayout.WEST, imageLabel);
+		appLayout.putConstraint(SpringLayout.EAST, pokedexDropDown, 0, SpringLayout.EAST, imageLabel);
+		appLayout.putConstraint(SpringLayout.WEST, healthField, 128, SpringLayout.EAST, healthLabel);
+		appLayout.putConstraint(SpringLayout.NORTH, pokedexDropDown, 1, SpringLayout.NORTH, nameField);
 		appLayout.putConstraint(SpringLayout.NORTH, changeButton, 40, SpringLayout.NORTH, this);
 		appLayout.putConstraint(SpringLayout.WEST, changeButton, 10, SpringLayout.WEST, this);
-		appLayout.putConstraint(SpringLayout.NORTH, pokedexDropDown, 27, SpringLayout.NORTH, this);
-		appLayout.putConstraint(SpringLayout.EAST, pokedexDropDown, -390, SpringLayout.EAST, this);
 		appLayout.putConstraint(SpringLayout.WEST, healthLabel, 1, SpringLayout.EAST, changeButton);
 		appLayout.putConstraint(SpringLayout.WEST, attackLabel, 262, SpringLayout.WEST, this);
 		appLayout.putConstraint(SpringLayout.EAST, enhancementModifierLabel, -394, SpringLayout.EAST, this);
@@ -115,7 +117,6 @@ public class PokedexPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.EAST, canEvolveLabel, -466, SpringLayout.EAST, this);
 		appLayout.putConstraint(SpringLayout.NORTH, canEvolveLabel, 72, SpringLayout.SOUTH, nameLabel);
 		appLayout.putConstraint(SpringLayout.NORTH, healthField, 0, SpringLayout.NORTH, changeButton);
-		appLayout.putConstraint(SpringLayout.WEST, healthField, 68, SpringLayout.EAST, pokedexDropDown);
 		appLayout.putConstraint(SpringLayout.NORTH, attackField, 63, SpringLayout.SOUTH, healthField);
 		appLayout.putConstraint(SpringLayout.EAST, attackField, 0, SpringLayout.EAST, healthField);
 		appLayout.putConstraint(SpringLayout.NORTH, enhancementField, 63, SpringLayout.SOUTH, attackField);
