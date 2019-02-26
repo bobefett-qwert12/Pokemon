@@ -23,15 +23,9 @@ public class PokedexController
 	
 	public PokedexController()
 	{
-		this.pokemonList = new ArrayList<Pokemon>(5);
-		this.frame = new PokedexFrame(this);
-		this.Pikachu = new Pikachu(25, "Pikachu");
-		this.Squirtle = new Squirtle(7, "Squirtle");
-		this.Charizard = new Charizard(6, "Charizard");
-		this.Flareon = new Flareon(136, "Flareon");
-		this.Ivysaur = new Ivysaur(2, "Ivysaur");
-		this.Samus = new Samus(999, "Samus Aran");
+		this.pokemonList = new ArrayList<Pokemon>(6);
 		buildPokemonList();
+		this.frame = new PokedexFrame(this);
 	}
 	
 	public void start()
@@ -64,6 +58,12 @@ public class PokedexController
 	
 	public void buildPokemonList()
 	{
+		this.Pikachu = new Pikachu(25, "Pikachu");
+		this.Squirtle = new Squirtle(7, "Squirtle");
+		this.Charizard = new Charizard(6, "Charizard");
+		this.Flareon = new Flareon(136, "Flareon");
+		this.Ivysaur = new Ivysaur(2, "Ivysaur");
+		this.Samus = new Samus(999, "Samus");
 		pokemonList.add(Ivysaur);
 		pokemonList.add(Flareon);
 		pokemonList.add(Charizard);
