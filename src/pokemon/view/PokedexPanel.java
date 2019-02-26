@@ -13,6 +13,7 @@ public class PokedexPanel extends JPanel
 	private SpringLayout appLayout;
 	
 	private JButton changeButton;
+	private JButton saveButton;
 	private JComboBox<String> pokedexDropDown;
 	
 	private JTextField healthField;
@@ -41,6 +42,7 @@ public class PokedexPanel extends JPanel
 		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/pokeball.jpeg"));
 		
 		changeButton = new JButton("Click here to edit your pokemon!");
+		saveButton = new JButton("Click here to save all your pokemon!");
 		pokedexDropDown = new JComboBox<String>();
 		
 		healthField = new JTextField("0");
@@ -72,6 +74,7 @@ public class PokedexPanel extends JPanel
 		this.setBackground(Color.darkGray);
 		
 		this.add(changeButton);
+		this.add(saveButton);
 		this.add(pokedexDropDown);
 		
 		this.add(healthField);
@@ -173,6 +176,43 @@ public class PokedexPanel extends JPanel
 		repaint();
 	}
 	
+	private void updateFields()
+	{
+		int pokemonIndex;
+		switch(nameField.getText())
+		{
+		case "MissingNo.":
+			pokemonIndex = 0;
+			break;
+		case "Ivysaur":
+			pokemonIndex = 0;
+			break;
+		case "Flareon":
+			pokemonIndex = 1;
+			break;
+		case "Charizard":
+			pokemonIndex = 2;
+			break;
+		case "Pikachu":
+			pokemonIndex = 3;
+			break;
+		case "Squirtle":
+			pokemonIndex = 4;
+			break;
+		case "Samus":
+			pokemonIndex = 5;
+			break;
+		default:
+			pokemonIndex = 0;
+		}
+		healthField.setText(app.getPokemonData(pokemonIndex, 1));
+		attackField.setText(app.getPokemonData(pokemonIndex, 2));
+		enhancementField.setText(app.getPokemonData(pokemonIndex, 3));
+		numberField.setText(app.getPokemonData(pokemonIndex, 4));
+		nameField.setText(app.getPokemonData(pokemonIndex, 5));
+		evolveField.setText(app.getPokemonData(pokemonIndex, 6));
+	}
+	
 	private void setupListeners()
 	{
 		changeButton.addActionListener(new ActionListener()
@@ -189,6 +229,16 @@ public class PokedexPanel extends JPanel
 			{
 				String name = pokedexDropDown.getSelectedItem().toString();
 				changeImageDisplay(name);
+				updateFields();
+				imageLabel.setText(nameField.getText());
+			}
+		});
+		
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				app.savePokedex();
 			}
 		});
 	}

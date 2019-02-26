@@ -8,12 +8,17 @@ import pokemon.model.Squirtle;
 import pokemon.model.Pokemon;
 import pokemon.model.Samus;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import pokemon.view.PokedexFrame;
+import java.io.*;
 
 public class PokedexController
 {	
 	public ArrayList<Pokemon> pokemonList;
 	public PokedexFrame frame;
+	public String saveFile = "backup.pokemon";
 	public Pikachu Pikachu;
 	public Charizard Charizard;
 	public Ivysaur Ivysaur;
@@ -33,13 +38,81 @@ public class PokedexController
 		
 	}
 	
+	public String getPokemonData(int pokemonIndex, int index)
+	{
+		Pokemon pokemon = pokemonList.get(pokemonIndex);
+		switch(index)
+		{
+			case 1:
+				return pokemon.getHealthPoints();
+			case 2:
+				return pokemon.getAttackPoints();
+			case 3:
+				return (int)pokemon.getEnhancementModifier();
+			case 4:
+				return pokemon.getNumber();
+			case 5:
+				return pokemon.getName();
+			case 6:
+				if(pokemon.isCanEvolve())
+				{
+					return "True";
+				}
+				else
+				{
+					return "False";
+				}
+			default:
+				return 0;
+		}
+	}
+	
+	public void savePokedex()
+	{
+		try
+		{
+			FileOutputStream saveStream = new FileOutputStream(saveFile);
+			ObjectOutputStream output = new ObjectOutputStream(saveStream);
+			output.writeObject(pokemonList);
+			output.close();
+			saveStream.close();
+		}
+		catch(IOException e)
+		{
+			JOptionPane.showMessageDialog(frame, e.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void loadPokedex()
+	{
+		try
+		{
+			ArrayList<Pokemon> saved = new ArrayList<Pokemon>();
+			FileInputStream inputStream = new FileInputStream(saveFile);
+			ObjectInputStream input = new ObjectInputStream(inputStream);
+			saved = (ArrayList<Pokemon>)input.readObject();
+			input.close();
+			inputStream.close();
+			pokemonList = saved;
+		}
+		catch(IOException e)
+		{
+			JOptionPane.showMessageDialog(frame,  "No Save File", "Loading Pokemon", JOptionPane.INFORMATION_MESSAGE);
+		}
+		catch(ClassNotFoundException e)
+		{
+			JOptionPane.showMessageDialog(frame, e.getMessage(), "Type Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
 	public String[] buildPokedexText()
 	{
-		String [] names = new String[pokemonList.size()];
-		for(int index = 0; index < pokemonList.size(); index++)
+		String [] names = new String[pokemonList.size() + 1];
+		for(int index = 1; index < pokemonList.size() + 1; index++)
 		{
-			names[index] = pokemonList.get(index).getName();
+			names[index] = pokemonList.get(index - 1).getName();
 		}
+		names[0] = "Select a Pokemon";
 		return names;
 	}
 	
