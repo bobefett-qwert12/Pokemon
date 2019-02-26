@@ -4,8 +4,6 @@ import pokemon.controller.PokedexController;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.Dimension;
 import java.awt.Color;
 
@@ -185,9 +183,9 @@ public class PokedexPanel extends JPanel
 			}
 		});
 		
-		pokedexDropDown.addItemListener(new ItemListener()
+		pokedexDropDown.addActionListener(new ActionListener()
 		{
-			public void itemStateChanged(ItemEvent selection)
+			public void actionPerformed(ActionEvent selection)
 			{
 				String name = pokedexDropDown.getSelectedItem().toString();
 				changeImageDisplay(name);
