@@ -6,6 +6,7 @@ import pokemon.model.Charizard;
 import pokemon.model.Pikachu;
 import pokemon.model.Squirtle;
 import pokemon.model.Pokemon;
+import pokemon.model.Samus;
 import java.util.ArrayList;
 import pokemon.view.PokedexFrame;
 
@@ -18,6 +19,7 @@ public class PokedexController
 	public Ivysaur Ivysaur;
 	public Flareon Flareon;
 	public Squirtle Squirtle;
+	public Samus Samus;
 	
 	public PokedexController()
 	{
@@ -28,6 +30,7 @@ public class PokedexController
 		this.Charizard = new Charizard(6, "Charizard");
 		this.Flareon = new Flareon(136, "Flareon");
 		this.Ivysaur = new Ivysaur(2, "Ivysaur");
+		this.Samus = new Samus(999, "Samus Aran");
 		buildPokemonList();
 	}
 	
@@ -66,6 +69,7 @@ public class PokedexController
 		pokemonList.add(Charizard);
 		pokemonList.add(Pikachu);
 		pokemonList.add(Squirtle);
+		pokemonList.add(Samus);
 	}
 	
 	public PokedexFrame getFrame()
