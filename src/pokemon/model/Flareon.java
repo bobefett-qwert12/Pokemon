@@ -7,6 +7,7 @@ public class Flareon extends Eevee implements FireType
 	public Flareon(int number, String name)
 	{
 		super(number, name);
+		this.setCanEvolve(false);
 	}
 	
 	public void flamethrower()

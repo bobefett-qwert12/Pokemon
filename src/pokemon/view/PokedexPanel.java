@@ -1,6 +1,8 @@
 package pokemon.view;
 
 import pokemon.controller.PokedexController;
+import pokemon.model.Pokemon;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -176,41 +178,15 @@ public class PokedexPanel extends JPanel
 		repaint();
 	}
 	
-	private void updateFields()
+	private void updateFields(int index)
 	{
-		int pokemonIndex;
-		switch(nameField.getText())
-		{
-		case "MissingNo.":
-			pokemonIndex = 0;
-			break;
-		case "Ivysaur":
-			pokemonIndex = 0;
-			break;
-		case "Flareon":
-			pokemonIndex = 1;
-			break;
-		case "Charizard":
-			pokemonIndex = 2;
-			break;
-		case "Pikachu":
-			pokemonIndex = 3;
-			break;
-		case "Squirtle":
-			pokemonIndex = 4;
-			break;
-		case "Samus":
-			pokemonIndex = 5;
-			break;
-		default:
-			pokemonIndex = 0;
-		}
-		healthField.setText(app.getPokemonData(pokemonIndex, 1));
-		attackField.setText(app.getPokemonData(pokemonIndex, 2));
-		enhancementField.setText(app.getPokemonData(pokemonIndex, 3));
-		numberField.setText(app.getPokemonData(pokemonIndex, 4));
-		nameField.setText(app.getPokemonData(pokemonIndex, 5));
-		evolveField.setText(app.getPokemonData(pokemonIndex, 6));
+		String [] data = app.getPokemonData(index);
+		healthField.setText(data[0]);
+		attackField.setText(data[1]);
+		enhancementField.setText(data[2]);
+		numberField.setText(data[3]);
+		nameField.setText(data[4]);
+		evolveField.setText(data[5]);
 	}
 	
 	private void setupListeners()
@@ -229,7 +205,31 @@ public class PokedexPanel extends JPanel
 			{
 				String name = pokedexDropDown.getSelectedItem().toString();
 				changeImageDisplay(name);
-				updateFields();
+				int index;
+				switch(name)
+				{
+				case "Ivysaur":
+					index = 0;
+					break;
+				case "Flareon":
+					index = 1;
+					break;
+				case "Charizard":
+					index = 2;
+					break;
+				case "Pikachu":
+					index = 3;
+					break;
+				case "Squirtle":
+					index = 4;
+					break;
+				case "Samus":
+					index = 4;
+					break;
+				default:
+					index = 0;
+				}
+				updateFields(index);
 				imageLabel.setText(nameField.getText());
 			}
 		});

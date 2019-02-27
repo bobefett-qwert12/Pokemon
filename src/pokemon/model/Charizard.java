@@ -7,6 +7,7 @@ public class Charizard extends Charmeleon implements FlyingType
 	public Charizard(int number, String name)
 	{
 		super(number, name);
+		this.setCanEvolve(false);
 	}
 	
 	public void airCutter()

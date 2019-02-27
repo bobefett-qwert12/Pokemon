@@ -38,33 +38,17 @@ public class PokedexController
 		
 	}
 	
-	public String getPokemonData(int pokemonIndex, int index)
+	public String [] getPokemonData(int index)
 	{
-		Pokemon pokemon = pokemonList.get(pokemonIndex);
-		switch(index)
-		{
-			case 1:
-				return pokemon.getHealthPoints();
-			case 2:
-				return pokemon.getAttackPoints();
-			case 3:
-				return (int)pokemon.getEnhancementModifier();
-			case 4:
-				return pokemon.getNumber();
-			case 5:
-				return pokemon.getName();
-			case 6:
-				if(pokemon.isCanEvolve())
-				{
-					return "True";
-				}
-				else
-				{
-					return "False";
-				}
-			default:
-				return 0;
-		}
+		String [] data = new String[6];
+		Pokemon current = pokemonList.get(index);
+		data[0] = current.getHealthPoints() + "";
+		data[1] = current.getAttackPoints() + "";
+		data[2] = current.getEnhancementModifier() + "";
+		data[3] = current.getNumber() + "";
+		data[4] = current.getName();
+		data[5] = current.isCanEvolve() + "";
+		return data;
 	}
 	
 	public void savePokedex()

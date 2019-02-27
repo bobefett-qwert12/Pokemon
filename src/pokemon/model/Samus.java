@@ -7,6 +7,7 @@ public class Samus extends Pokemon implements FlyingType, MetalType
 	public Samus(int number, String name)
 	{
 		super(number, name);
+		this.setCanEvolve(true);
 	}
 	
 	public void airCutter()
