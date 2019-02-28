@@ -51,8 +51,11 @@ public class PokedexPanel extends JPanel
 		attackField = new JTextField("0");
 		enhancementField = new JTextField("0");
 		numberField = new JTextField("0");
+		numberField.setHorizontalAlignment(SwingConstants.TRAILING);
 		evolveField = new JTextField("False");
+		appLayout.putConstraint(SpringLayout.WEST, numberField, 0, SpringLayout.WEST, evolveField);
 		nameField = new JTextField("MissingNo.");
+		appLayout.putConstraint(SpringLayout.NORTH, nameField, 63, SpringLayout.SOUTH, numberField);
 		numberField.setEnabled(false);
 		
 		healthLabel = new JLabel("Health Points:");
@@ -128,13 +131,11 @@ public class PokedexPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.EAST, enhancementField, 0, SpringLayout.EAST, healthField);
 		appLayout.putConstraint(SpringLayout.NORTH, numberField, 63, SpringLayout.SOUTH, enhancementField);
 		appLayout.putConstraint(SpringLayout.EAST, numberField, 0, SpringLayout.EAST, healthField);
-		appLayout.putConstraint(SpringLayout.NORTH, nameField, 63, SpringLayout.SOUTH, numberField);
 		appLayout.putConstraint(SpringLayout.EAST, nameField, 0, SpringLayout.EAST, healthField);
 		appLayout.putConstraint(SpringLayout.NORTH, evolveField, 63, SpringLayout.SOUTH, nameField);
 		appLayout.putConstraint(SpringLayout.EAST, evolveField, 0, SpringLayout.EAST, healthField);
 		appLayout.putConstraint(SpringLayout.WEST, enhancementField, 121, SpringLayout.EAST, attackLabel);
 		appLayout.putConstraint(SpringLayout.WEST, attackField, 72, SpringLayout.EAST, enhancementModifierLabel);
-		appLayout.putConstraint(SpringLayout.WEST, numberField, 100, SpringLayout.EAST, numberLabel);
 		appLayout.putConstraint(SpringLayout.NORTH, numberLabel, 72, SpringLayout.SOUTH, attackLabel);
 		appLayout.putConstraint(SpringLayout.EAST, attackLabel, -21, SpringLayout.EAST, numberLabel);
 		appLayout.putConstraint(SpringLayout.WEST, nameField, 51, SpringLayout.EAST, nameLabel);
@@ -224,13 +225,26 @@ public class PokedexPanel extends JPanel
 					index = 4;
 					break;
 				case "Samus":
-					index = 4;
+					index = 5;
 					break;
 				default:
 					index = 0;
 				}
-				updateFields(index);
-				imageLabel.setText(nameField.getText());
+				if(name.equals("Select a Pokemon"))
+				{
+					healthField.setText("0");
+					attackField.setText("0");
+					enhancementField.setText("0");
+					numberField.setText("0");
+					nameField.setText("MissingNo.");
+					evolveField.setText("false");
+					imageLabel.setText("Pokemon goes here");
+				}
+				else
+				{
+					updateFields(index);
+					imageLabel.setText(nameField.getText());
+				}
 			}
 		});
 		
